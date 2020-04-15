@@ -1,0 +1,18 @@
+version: "2"
+
+services:
+  app:
+    container_name: first-docker
+    image: mkphp/php-ibm-odbc:apache
+    ports:
+      - 8082:80
+    volumes:
+      - ./certs:/etc/apache2/certs
+      -  /public-html:/var/www/html/
+      - ./db2consv_ee.lic:/opt/ibm/dsdriver/clidriver/license/db2consv_ee.lic
+      #- ./000-default.conf:/etc/apache2/sites-available/000-default.conf
+    env_file:
+      - ./.env
+    #extra_hosts:
+    #  - "otherhost:10.11.12.13" 
+    #privileged: true
